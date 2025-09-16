@@ -2,28 +2,44 @@ public class MovieTicket {
     String movieName;
     int seatNumber;
     double price;
+    boolean isBooked;
 
-    void setDetails(String m, int n, double p){
+    void setMovieName(String m){
         movieName = m;
-        seatNumber = n;
-        price = p;
+    }
+
+    void bookTicket(int s, double p){
+        if(!isBooked){
+            seatNumber = s;
+            price = p;
+            isBooked = true;
+            System.out.println("Ticket booked successfully.");
+        }else{
+            System.out.println("Sorry, ticket already booked.");
+        }
     }
     void displayDetails(){
-        System.out.println("--------------------------");
-        System.out.println("Name of the Movie :"+movieName);
-        System.out.println("Number of the Seat :"+seatNumber);
-        System.out.println("Price of the Movie Ticker :"+price);
-        System.out.println("Booking a Ticket :");
-        System.out.println("--------------------------");
+        if(isBooked){
+            System.out.println("-------------------------");
+            System.out.println("Name of the Movie :"+movieName);
+            System.out.println("Number of the Seat :"+seatNumber);
+            System.out.println("Price of the Movie Ticket :"+price);
+            System.out.println("--------------------------");
+        }else{
+            System.out.println("No ticket booked yet for movie :"+movieName);
+        }
     }
     public static void main(String[] args) {
-        MovieTicket m1 = new MovieTicket();
-        MovieTicket m2 = new MovieTicket();
+        MovieTicket t1 = new MovieTicket();
 
-        m1.setDetails("Border", 45, 250);
-        m2.setDetails("Dhoom", 56, 300);
+        t1.setMovieName("Border");
 
-        m1.displayDetails();
-        m2.displayDetails();
+        t1.displayDetails();
+
+        t1.bookTicket(18,300);
+        t1.displayDetails();
+
+        t1.bookTicket(20, 350);
+
     }
 }
