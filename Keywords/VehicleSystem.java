@@ -19,6 +19,9 @@ class Vehicle {
             System.out.println("--------------------------------");
         }
     }
+    public static void updateRegisterationFee(double newFee){
+        registerationFee = newFee;
+    }
 }
 public class VehicleSystem{
     public static void main(String[] args) {
@@ -27,5 +30,7 @@ public class VehicleSystem{
 
         vehicle1.displayVehicleDetails();
         vehicle2.displayVehicleDetails();
+        Vehicle.updateRegisterationFee(800);
+        System.out.println("Registeration Fee updated.");
     }
 }
